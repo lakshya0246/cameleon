@@ -1,0 +1,35 @@
+.input-container-list {
+  display: flex;
+  flex-direction: column;
+  & > .input-container {
+    margin-bottom: 16px;
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+
+  .input-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: var(--white-600);
+    font-weight: 500;
+    margin-left: 2px;
+  }
+
+  input,
+  textarea {
+    font-family: "Noto Sans Display", sans-serif;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--white-100);
+    border: 1px solid var(--gray-700);
+    background: var(--gray-900);
+    border-radius: 8px;
+    &::placeholder {
+      color: var(--white-600);
+    }
+  }
+}
