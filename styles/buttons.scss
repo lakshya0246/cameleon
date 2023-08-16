@@ -1,0 +1,83 @@
+@use "sass:color";
+
+@mixin normalizeButton {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: hidden;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+@mixin buttonColorVariant($background, $hover, $focus) {
+  background: $background;
+  color: var(--white-100);
+  &:hover {
+    background: $hover;
+  }
+  &:focus {
+    background: $focus;
+  }
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  @include normalizeButton;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  height: 40px;
+  padding: 0 16px;
+  transition: transform 250ms;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.icon-leading {
+    & > * {
+      margin-right: 8px;
+    }
+  }
+  &.icon-trailing {
+    & > * {
+      margin-left: 8px;
+    }
+  }
+
+  // Default
+  @include buttonColorVariant(
+    var(--color-gray-500),
+    var(--color-gray-700),
+    var(--color-gray-600)
+  );
+
+  &.primary {
+    @include buttonColorVariant(
+      var(--color-primary-500),
+      var(--color-primary-700),
+      var(--color-primary-600)
+    );
+  }
+
+  &.icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    padding: 0;
+  }
+
+  &.block {
+    width: 100%;
+    justify-content: center;
+  }
+}
