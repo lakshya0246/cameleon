@@ -56,11 +56,19 @@ $dark-theme: ();
   }
 }
 
-@mixin color($color, $alpha: null) {
+@mixin themed-property($property, $value, $alpha: null) {
   .dark-mode & {
-    color: get-color-value($color, "dark", $alpha);
+    #{$property}: get-color-value($value, "dark", $alpha);
   }
-  color: get-color-value($color, "default", $alpha);
+  #{$property}: get-color-value($value, "default", $alpha);
+}
+
+@mixin color($color, $alpha: null) {
+  @include themed-property("color", $color, $alpha);
+}
+
+@mixin background($color, $alpha: null) {
+  @include themed-property("background", $color, $alpha);
 }
 
 :root {
