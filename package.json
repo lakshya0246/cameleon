@@ -1,0 +1,9 @@
+{
+  "name": "cameleon",
+  "version": "1.0.0",
+  "description": "Components and utilities that help me quickly create personal projects",
+  "main": "index.ts",
+  "scripts": {},
+  "author": "",
+  "license": "ISC"
+}
