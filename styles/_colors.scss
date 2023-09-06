@@ -1,0 +1,88 @@
+@use "sass:color";
+@use "sass:map";
+
+$default-theme: ();
+
+$dark-theme: ();
+
+@mixin set-theme-value($propertyName, $value, $theme: "default") {
+  @if ($theme == "default") {
+    $default-theme: map.merge(
+      $default-theme,
+      (#{$propertyName}: $value)
+    ) !global;
+  } @else if ($theme == "dark") {
+    $dark-theme: map.merge($dark-theme, (#{$propertyName}: $value)) !global;
+  }
+}
+
+@mixin define-color($name, $value) {
+  @include set-theme-value(#{$name}-500, $value);
+  @for $i from 1 through 4 {
+    $lighterValue: color.scale($value, $lightness: (5 - $i) * 23%);
+    $colorName: #{$name}-#{$i}00;
+    @include set-theme-value($colorName, $lighterValue);
+  }
+  @for $i from 1 through 4 {
+    $colorName: #{$name}-#{$i + 5}00;
+    $darkerValue: color.scale(
+      $value,
+      $lightness: $i * -15%,
+      $saturation: $i * 25%
+    );
+    @include set-theme-value($colorName, $darkerValue);
+  }
+}
+
+@function get-theme-value($theme, $propertyName) {
+  @if ($theme == "default") {
+    @return map.get($default-theme, $propertyName);
+  }
+  $map-has-key: map.has-key($dark-theme, $propertyName);
+  @debug "map-has-key" $map-has-key;
+  @if ($map-has-key) {
+    @return map.get($dark-theme, $propertyName);
+  }
+  @return black;
+}
+
+@function get-color-value($color, $theme, $alpha: null) {
+  $themed-color: get-theme-value($theme, $color);
+  @debug "themed-color" $themed-color;
+  @if $alpha {
+    @return color.change($themed-color, $alpha: $alpha);
+  } @else {
+    @return $themed-color;
+  }
+}
+
+@mixin themed-property($property, $value, $alpha: null) {
+  .dark-mode & {
+    #{$property}: get-color-value($value, "dark", $alpha);
+  }
+  #{$property}: get-color-value($value, "default", $alpha);
+}
+
+@mixin color($color, $alpha: null) {
+  @include themed-property("color", $color, $alpha);
+}
+
+@mixin background($color, $alpha: null) {
+  @include themed-property("background", $color, $alpha);
+}
+
+:root {
+  @include define-color("primary", hsl(281, 61%, 46%));
+  @include define-color("gray", hsl(0, 0%, 0%));
+  @include define-color("white", hsl(0, 0%, 100%));
+}
+
+body {
+  color-scheme: light;
+  &.dark-mode {
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
