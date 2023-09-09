@@ -1,5 +1,5 @@
 {
-  "name": "cameleon",
+  "name": "@alsd/cameleon",
   "version": "1.0.1",
   "description": "Components and utilities that help me quickly create personal projects",
   "main": "index.ts",
