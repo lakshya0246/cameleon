@@ -25,11 +25,7 @@ $dark-theme: ();
   }
   @for $i from 1 through 4 {
     $colorName: #{$name}-#{$i + 5}00;
-    $darkerValue: color.scale(
-      $value,
-      $lightness: $i * -15%,
-      $saturation: $i * 25%
-    );
+    $darkerValue: color.scale($value, $lightness: $i * -15%);
     @include set-theme-value($colorName, $darkerValue);
   }
 }
@@ -39,7 +35,6 @@ $dark-theme: ();
     @return map.get($default-theme, $propertyName);
   }
   $map-has-key: map.has-key($dark-theme, $propertyName);
-  @debug "map-has-key" $map-has-key;
   @if ($map-has-key) {
     @return map.get($dark-theme, $propertyName);
   }
@@ -48,7 +43,6 @@ $dark-theme: ();
 
 @function get-color-value($color, $theme, $alpha: null) {
   $themed-color: get-theme-value($theme, $color);
-  @debug "themed-color" $themed-color;
   @if $alpha {
     @return color.change($themed-color, $alpha: $alpha);
   } @else {
@@ -70,19 +64,10 @@ $dark-theme: ();
 @mixin background($color, $alpha: null) {
   @include themed-property("background", $color, $alpha);
 }
-
-:root {
-  @include define-color("primary", hsl(281, 61%, 46%));
-  @include define-color("gray", hsl(0, 0%, 0%));
-  @include define-color("white", hsl(0, 0%, 100%));
+@mixin border-color($color, $alpha: null) {
+  @include themed-property("border-color", $color, $alpha);
 }
 
-body {
-  color-scheme: light;
-  &.dark-mode {
-    color-scheme: dark;
-  }
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-}
+@include define-color("primary", hsl(281, 61%, 46%));
+@include define-color("gray", hsl(0, 0%, 50%));
+@include define-color("white", hsl(0, 0%, 100%));

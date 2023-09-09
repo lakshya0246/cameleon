@@ -1,0 +1,9 @@
+body {
+  color-scheme: light;
+  &.dark-mode {
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
