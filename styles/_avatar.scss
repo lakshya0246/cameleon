@@ -1,0 +1,16 @@
+@use "colors";
+
+.avatar-container {
+  height: 48px;
+  width: 48px;
+  border: 1px solid;
+  @include colors.border-color("gray-100");
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 50%;
+
+  &:hover {
+    @include colors.border-color("gray-200");
+  }
+}

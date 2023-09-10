@@ -1,0 +1,23 @@
+@use "layout";
+@use "colors";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: layout.$paddingY layout.$paddingX;
+  border-bottom: 1px solid;
+  @include colors.border-color("gray-100");
+
+  & > .left,
+  & > .right {
+    display: flex;
+    align-items: center;
+  }
+
+  & > .left {
+    justify-content: flex-start;
+  }
+  & > .right {
+    justify-content: flex-end;
+  }
+}
