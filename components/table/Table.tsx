@@ -6,6 +6,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { title } from "radash";
+import { Delete } from "react-feather";
 
 type Props<T> = {
   columnHelper: ColumnHelper<T>;
@@ -14,6 +15,7 @@ type Props<T> = {
     Record<keyof T, { cell: (info: any) => any; header?: string }>
   >;
   omittedColumns?: (keyof T)[];
+  onDeleteClick?: (index: number) => void;
 };
 
 export function Table<T extends Record<string, any>>(props: Props<T>) {
@@ -63,6 +65,16 @@ export function Table<T extends Record<string, any>>(props: Props<T>) {
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
+            {props.onDeleteClick && (
+              <td>
+                <button
+                  className="button icon"
+                  onClick={() => props.onDeleteClick?.(row.index)}
+                >
+                  <Delete />
+                </button>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>

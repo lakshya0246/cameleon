@@ -1,12 +1,17 @@
+@use "colors";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100&family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
+@function font-family() {
+  @return unquote(
+    '"Poppins", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif'
+  );
+}
 body {
-  font-family: "Poppins", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: font-family();
 }
 
 .display-heading-1 {
-  color: var(--white-300);
+  @include colors.color("gray-700");
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -15,14 +20,14 @@ body {
 }
 
 .display-body-1 {
-  color: var(--white-700);
+  @include colors.color("gray-700");
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
 }
 
 .caption-1 {
-  color: var(--white-700);
+  @include colors.color("gray-700");
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

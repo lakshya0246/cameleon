@@ -1,6 +1,8 @@
 $paddingX: 12px;
 $paddingY: 8px;
-
+body {
+  height: 100vh;
+}
 .content-wrapper {
   padding: $paddingY $paddingX;
 }

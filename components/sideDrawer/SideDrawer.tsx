@@ -1,7 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import styles from "./SideDrawer.module.scss";
-import { ReactNode } from "react";
-import { X } from "react-feather";
+import React, { ReactNode } from "react";
+
 type Props = {
   children?: ReactNode | ReactNode[];
   title?: string;
@@ -20,12 +19,16 @@ export function SideDrawer(props: Props & Dialog.DialogProps) {
         {Trigger ?? "Trigger not provided"}
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className={styles.sideDrawerOverlay} />
-        <Dialog.Content className={styles.sideDrawer}>
-          {props.title && (
-            <Dialog.Title className="DialogTitle">{props.title}</Dialog.Title>
-          )}
-          {Body ?? ""}
+        <Dialog.Overlay className="sidedrawer-overlay" />
+        <Dialog.Content className="sidedrawer-content">
+          <div className="sidedrawer-header">
+            {props.title && (
+              <Dialog.Title className="display-heading-1">
+                {props.title}
+              </Dialog.Title>
+            )}
+          </div>
+          <div className="sidedrawer-body">{Body ?? ""}</div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

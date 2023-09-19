@@ -1,0 +1,42 @@
+@use "colors";
+
+.sidedrawer-content {
+  display: flex;
+  flex-direction: column;
+  @include colors.background("white-500");
+  width: 100%;
+  max-width: 480px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+}
+.sidedrawer-body {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+.sidedrawer-header {
+  display: flex;
+  padding: 12px 8px;
+  border-bottom: 1px solid;
+  @include colors.border-color("gray-100");
+}
+
+.sidedrawer-overlay {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  @include colors.background("gray-900", 0.2);
+}
+
+.sidedrawer-footer {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: 8px;
+  }
+}
