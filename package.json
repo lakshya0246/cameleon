@@ -1,9 +1,17 @@
 {
   "name": "@alsd/cameleon",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Components and utilities that help me quickly create personal projects",
   "main": "index.ts",
   "scripts": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.4",
+    "@react-aria/numberfield": "^3.8.0",
+    "@tanstack/react-table": "^8.10.1",
+    "date-fns": "^2.30.0",
+    "radash": "^11.0.0",
+    "react-feather": "^2.0.10"
+  }
 }
