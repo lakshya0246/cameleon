@@ -1,0 +1,51 @@
+@use "colors";
+
+.checkbox-container {
+  display: flex;
+  border: 1px solid;
+  @include colors.border-color("gray-100");
+  padding: 8px;
+  border-radius: 50px;
+  .checkbox-root {
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  &:hover {
+    @include colors.border-color("gray-200");
+  }
+}
+
+.checkbox-root {
+  &.button.icon {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+}
+
+.checkbox-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.checkbox-list {
+  display: flex;
+  flex-direction: column;
+  .checkbox-container {
+    margin-bottom: 8px;
+  }
+}

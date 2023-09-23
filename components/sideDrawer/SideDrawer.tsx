@@ -1,10 +1,10 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import React, { ReactNode } from "react";
+import { X } from "react-feather";
 
 type Props = {
   children?: ReactNode | ReactNode[];
   title?: string;
-  onSubmit?: () => void;
 };
 export function SideDrawer(props: Props & Dialog.DialogProps) {
   const Trigger = Array.isArray(props.children)
@@ -27,6 +27,13 @@ export function SideDrawer(props: Props & Dialog.DialogProps) {
                 {props.title}
               </Dialog.Title>
             )}
+            <button
+              onClick={() => props.onOpenChange?.(false)}
+              role="button"
+              className="button icon"
+            >
+              <X />
+            </button>
           </div>
           <div className="sidedrawer-body">{Body ?? ""}</div>
         </Dialog.Content>

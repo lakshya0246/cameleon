@@ -14,13 +14,18 @@
 .sidedrawer-body {
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 16px 8px;
+  height: 100%;
+  .sidedrawer-footer {
+    margin-top: auto;
+  }
 }
 .sidedrawer-header {
   display: flex;
   padding: 12px 8px;
   border-bottom: 1px solid;
   @include colors.border-color("gray-100");
+  justify-content: space-between;
 }
 
 .sidedrawer-overlay {
@@ -35,8 +40,4 @@
 .sidedrawer-footer {
   display: flex;
   flex-direction: column;
-
-  & > * {
-    margin-bottom: 8px;
-  }
 }

@@ -1,3 +1,6 @@
+@use "colors";
+@use "typography";
+
 $paddingX: 12px;
 $paddingY: 8px;
 body {
@@ -5,4 +8,25 @@ body {
 }
 .content-wrapper {
   padding: $paddingY $paddingX;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $paddingX $paddingX $paddingX 20px;
+  border-radius: 50px;
+  border: 1px solid;
+  @include colors.border-color("gray-100");
+}
+
+.section-heading {
+  @extend .display-heading-1;
+  margin: 0;
+}
+
+@mixin on-mobile-devices() {
+  @media (max-width: 768px) {
+    @content;
+  }
 }
