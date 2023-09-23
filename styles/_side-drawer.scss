@@ -1,4 +1,5 @@
 @use "colors";
+@use "layout";
 $default-padding: 12px 8px;
 .sidedrawer-content {
   display: flex;
@@ -28,6 +29,9 @@ $default-padding: 12px 8px;
     left: 0;
     border-top: 1px solid;
     @include colors.border-color("gray-100");
+    @include layout.on-mobile-devices() {
+      position: fixed;
+    }
   }
 }
 .sidedrawer-header {
