@@ -1,5 +1,5 @@
 @use "colors";
-
+$default-padding: 12px 8px;
 .sidedrawer-content {
   display: flex;
   flex-direction: column;
@@ -10,22 +10,33 @@
   top: 0;
   right: 0;
   height: 100vh;
+  overflow-y: hidden;
 }
 .sidedrawer-body {
   display: flex;
   flex-direction: column;
   padding: 16px 8px;
   height: 100%;
+  overflow-y: scroll;
+  padding-bottom: 200px;
+
   .sidedrawer-footer {
     margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    border-top: 1px solid;
+    @include colors.border-color("gray-100");
   }
 }
 .sidedrawer-header {
   display: flex;
-  padding: 12px 8px;
+  padding: $default-padding;
   border-bottom: 1px solid;
   @include colors.border-color("gray-100");
   justify-content: space-between;
+  align-items: center;
 }
 
 .sidedrawer-overlay {
@@ -40,4 +51,6 @@
 .sidedrawer-footer {
   display: flex;
   flex-direction: column;
+  padding: $default-padding;
+  @include colors.background("white-500");
 }
