@@ -6,7 +6,10 @@ $border: 1px solid;
 @mixin table-default-border-color {
   @include colors.border-color("gray-100");
 }
-
+.scrollable-table-container {
+  width: 100%;
+  overflow-x: scroll;
+}
 .table {
   border-spacing: 0;
   border-collapse: separate;
@@ -18,6 +21,7 @@ $border: 1px solid;
 
   td,
   th {
+    white-space: nowrap;
     border: $border;
     @include table-default-border-color();
     border-right: none;

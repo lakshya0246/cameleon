@@ -54,6 +54,7 @@ export function Table<T extends Record<string, any>>(props: Props<T>) {
                     )}
               </th>
             ))}
+            {props.onDeleteClick && <th></th>}
           </tr>
         ))}
       </thead>
