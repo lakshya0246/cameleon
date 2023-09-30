@@ -1,7 +1,9 @@
 @use "buttons";
 @use "colors";
+@use "scrollbar";
 
 .tabs {
+  @extend .no-scrollbar;
   display: flex;
   overflow-y: scroll;
 

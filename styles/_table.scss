@@ -1,15 +1,19 @@
 @use "colors";
 @use "typography";
+@use "scrollbar";
+
 $border-radius: 8px;
 $border: 1px solid;
 
 @mixin table-default-border-color {
   @include colors.border-color("gray-100");
 }
-.scrollable-table-container {
+.table-scrollable-container {
   width: 100%;
   overflow-x: scroll;
+  @extend .no-scrollbar;
 }
+
 .table {
   border-spacing: 0;
   border-collapse: separate;
