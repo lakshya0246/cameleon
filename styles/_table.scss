@@ -1,0 +1,66 @@
+@use "colors";
+@use "typography";
+$border-radius: 8px;
+$border: 1px solid;
+
+@mixin table-default-border-color {
+  @include colors.border-color("gray-100");
+}
+
+.table {
+  border-spacing: 0;
+  border-collapse: separate;
+  border: none;
+
+  // @include colors.border-color("gray-200");
+  text-align: center;
+  vertical-align: middle;
+
+  td,
+  th {
+    border: $border;
+    @include table-default-border-color();
+    border-right: none;
+    border-bottom: none;
+  }
+
+  tr {
+    &:last-child {
+      td {
+        border-bottom: $border;
+        @include table-default-border-color();
+        &:first-child {
+          border-bottom-left-radius: $border-radius;
+        }
+        &:last-child {
+          border-bottom-right-radius: $border-radius;
+        }
+      }
+    }
+  }
+
+  td {
+    @extend .display-body-1;
+    padding: 5px 8px;
+    &:last-child {
+      border-right: $border;
+      @include table-default-border-color();
+    }
+  }
+
+  th {
+    @extend .caption-1;
+    @extend .text-semibold;
+    @include colors.color("gray-600");
+
+    padding: 4px 8px;
+    &:first-child {
+      border-top-left-radius: $border-radius;
+    }
+    &:last-child {
+      border-top-right-radius: $border-radius;
+      border-right: $border;
+      @include table-default-border-color();
+    }
+  }
+}

@@ -40,7 +40,7 @@ export function Table<T extends Record<string, any>>(props: Props<T>) {
   });
 
   return (
-    <table>
+    <table className="table">
       <thead>
         {tableInstance.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
@@ -61,7 +61,7 @@ export function Table<T extends Record<string, any>>(props: Props<T>) {
         {tableInstance.getRowModel().rows.map((row) => (
           <tr key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <td style={{ border: "1px solid gainsboro" }} key={cell.id}>
+              <td key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}

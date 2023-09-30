@@ -3,6 +3,9 @@
 
 $paddingX: 12px;
 $paddingY: 8px;
+:root {
+  --default-padding-x: #{$paddingX};
+}
 body {
   height: 100vh;
 }
@@ -29,4 +32,13 @@ body {
   @media (max-width: 768px) {
     @content;
   }
+}
+
+.space-1 {
+  height: 1px;
+  margin: 8px 0;
+}
+.space-2 {
+  height: 1px;
+  margin: 16px 0;
 }
