@@ -1,3 +1,14 @@
+$spacingUnit1: 4px;
+$spacingUnit: 8px;
+
 .m-0 {
   margin: 0;
+}
+
+.mr-2 {
+  margin-right: $spacingUnit;
+}
+
+.mb-1 {
+  margin-bottom: $spacingUnit;
 }
