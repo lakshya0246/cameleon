@@ -1,1 +1,1 @@
-Components and utilities that help me quickly create personal projects
+Opinionated components and utilities for quickly create web apps
