@@ -7,16 +7,18 @@ export type CheckboxProps = ComponentProps<"input"> & {
   label: string;
   checked?: boolean;
   onCheckedChange?: (value: boolean) => void;
+  hideIndicator?: boolean;
 };
 
 export function Checkbox(props: ComponentProps<"input"> & CheckboxProps) {
   return (
-    <div className="checkbox-container">
+    <div className={classNames("checkbox-container", props.className)}>
       <RadixCheckbox.Root
         onCheckedChange={props.onCheckedChange}
         checked={props.checked}
         className={classNames("checkbox-root button icon", {
           primary: props.checked,
+          "indicator-hidden": props.hideIndicator,
         })}
         defaultChecked
         id={props.id}

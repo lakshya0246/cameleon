@@ -11,6 +11,6 @@ export function TextField(
     props.onChange?.(e.target.value);
   };
   return (
-    <input {...props} onChange={onChange} value={props.value} type="text" />
+    <input type="text" {...props} onChange={onChange} value={props.value} />
   );
 }

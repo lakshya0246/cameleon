@@ -5,3 +5,4 @@ export * from "./table";
 export * from "./timeField";
 export * from "./sideDrawer";
 export * from "./checkbox";
+export * from "./select";

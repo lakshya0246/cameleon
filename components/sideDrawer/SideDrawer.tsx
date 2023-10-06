@@ -28,6 +28,7 @@ export function SideDrawer(props: Props & Dialog.DialogProps) {
               </Dialog.Title>
             )}
             <button
+              type="button"
               onClick={() => props.onOpenChange?.(false)}
               role="button"
               className="button icon"

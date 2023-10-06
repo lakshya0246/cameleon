@@ -22,6 +22,9 @@
     height: 32px;
     width: 32px;
   }
+  &.indicator-hidden.button.icon {
+    display: none;
+  }
 }
 
 .checkbox-label {
