@@ -1,10 +1,10 @@
-import { ComponentProps } from "react";
+import { ComponentProps, ReactNode } from "react";
 import * as RadixCheckbox from "@radix-ui/react-checkbox";
 import { Check } from "react-feather";
 import classNames from "classnames";
 
 export type CheckboxProps = ComponentProps<"input"> & {
-  label: string;
+  label: ReactNode;
   checked?: boolean;
   onCheckedChange?: (value: boolean) => void;
   hideIndicator?: boolean;
@@ -12,7 +12,10 @@ export type CheckboxProps = ComponentProps<"input"> & {
 
 export function Checkbox(props: ComponentProps<"input"> & CheckboxProps) {
   return (
-    <div className={classNames("checkbox-container", props.className)}>
+    <div
+      className={classNames("checkbox-container", props.className)}
+      onClick={props.onClick}
+    >
       <RadixCheckbox.Root
         onCheckedChange={props.onCheckedChange}
         checked={props.checked}
