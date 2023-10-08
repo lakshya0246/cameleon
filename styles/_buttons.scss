@@ -38,6 +38,12 @@
   }
 }
 
+.button-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .button {
   @include normalizeButton;
   font-family: typography.font-family();
