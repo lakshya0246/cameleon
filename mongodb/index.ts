@@ -1,5 +1,5 @@
 import { Collection, MongoClient } from "mongodb";
-import { WithUserId } from "../../types";
+import { WithUserId } from "../types";
 import { getSession } from "@auth0/nextjs-auth0";
 
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
