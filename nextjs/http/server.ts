@@ -1,6 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { getCollection } from "../../mongodb";
-import { WithId } from "@types";
+import { WithId } from "../../types";
 import { ObjectId } from "bson";
 import { NextResponse } from "next/server";
 
