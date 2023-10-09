@@ -2,6 +2,9 @@ import { Collection, MongoClient } from "mongodb";
 import { WithUserId } from "../types";
 import { getSession } from "@auth0/nextjs-auth0";
 
+if (!process.env.MONGODB_URI) {
+  throw new Error("Missing MONGODB_URI environment variable");
+}
 const mongoClient = new MongoClient(process.env.MONGODB_URI);
 let connected = false;
 
