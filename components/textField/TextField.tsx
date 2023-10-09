@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ComponentProps, InputHTMLAttributes } from "react";
+import { ChangeEventHandler, ComponentProps } from "react";
 
 type Props = {
   value?: string;
