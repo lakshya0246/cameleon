@@ -1,5 +1,5 @@
 import { Collection, MongoClient } from "mongodb";
-import { WithUserId } from "../types";
+import { WithSoftDelete, WithUserId } from "../types";
 import { getSession } from "@auth0/nextjs-auth0";
 
 if (!process.env.MONGODB_URI) {
@@ -35,6 +35,8 @@ export async function getCollectionArrayForSession<T extends {}>(
     return [];
   }
 
-  const array = await collection.find({ userId: session.user.sub }).toArray();
+  const array = await collection
+    .find({ userId: session.user.sub, deleted: { $exists: false } })
+    .toArray();
   return array;
 }

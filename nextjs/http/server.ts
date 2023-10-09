@@ -38,11 +38,15 @@ export async function deleteMethod<T extends { id: string } = { id: string }>(
   if (!session?.user.sub) {
     return NextResponse.error();
   }
-  const result = await collection.deleteOne({
-    // FIXME
-    _id: new ObjectId(body.id) as any,
-    userId: session.user.sub,
-  });
+  const result = await collection.updateOne(
+    { _id: new ObjectId(body.id) as any },
+    {
+      $set: {
+        deleted: true,
+      },
+      // FIXME
+    } as any
+  );
   if (result.acknowledged) {
     return NextResponse.json(result);
   } else {

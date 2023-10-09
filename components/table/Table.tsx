@@ -12,7 +12,10 @@ type Props<T> = {
   columnHelper: ColumnHelper<T>;
   data: T[];
   specialColumns?: Partial<
-    Record<keyof T, { cell: (info: any) => any; header?: string }>
+    Record<
+      keyof T,
+      { cell: (info: { getValue(): any }) => any; header?: string }
+    >
   >;
   omittedColumns?: (keyof T)[];
   onDeleteClick?: (index: number) => void;
