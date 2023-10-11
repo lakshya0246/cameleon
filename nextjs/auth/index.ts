@@ -3,7 +3,7 @@ import { TypedRequest } from "../http/server";
 import { PageProps } from "../../types";
 
 export function withAuth(
-  component: (pageProps?: PageProps) => Promise<JSX.Element> | JSX.Element,
+  component: (pageProps: PageProps) => Promise<JSX.Element> | JSX.Element,
   returnTo = "/"
 ) {
   return withPageAuthRequired(component as () => Promise<JSX.Element>, {
