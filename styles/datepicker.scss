@@ -2,18 +2,14 @@
 @use "typography";
 
 .rdp {
-  --rdp-cell-size: 40px; /* Size of the day cells. */
-  --rdp-caption-font-size: 18px; /* Font size for the caption labels. */
+  --rdp-cell-size: 40px;
   @include colors.themed-property("--rdp-accent-color", "primary-500");
-  /* Accent color for the background of selected days. */
-  --rdp-background-color: #e7edff; /* Background color for the hovered/focused elements. */
+  @include colors.themed-property("--rdp-background-color", "primary-500", 0.1);
   @include colors.themed-property("--rdp-accent-color-dark", "primary-500");
-  /* Accent color for the background of selected days (to use in dark-mode). */
   --rdp-background-color-dark: #180270; /* Background color for the hovered/focused elements (to use in dark-mode). */
   --rdp-outline: 2px solid var(--rdp-accent-color); /* Outline border for focused elements */
   --rdp-outline-selected: 3px solid var(--rdp-accent-color); /* Outline border for focused _and_ selected elements */
   --rdp-selected-color: #fff; /* Color of selected day text */
-
   margin: 1em;
 }
 
@@ -57,6 +53,8 @@
   outline: none;
 }
 
+$rdp-day-root: ".rdp-day";
+
 .rdp-button {
   border: none;
   overflow: visible;
@@ -70,7 +68,7 @@
   margin: 0;
   border-radius: 100%;
 
-  &[disabled]:not(.rdp-day_selected) {
+  &[disabled]:not(#{$rdp-day-root}_selected) {
     opacity: 0.25;
   }
 
@@ -82,27 +80,33 @@
     background-color: var(--rdp-background-color);
     border: var(--rdp-outline);
   }
-  &:hover:not([disabled]):not(.rdp-day_selected) {
+  &:hover:not([disabled]):not(#{$rdp-day-root}_selected) {
     background-color: var(--rdp-background-color);
   }
 }
-.rdp-day {
+
+#{$rdp-day-root} {
   @extend .label-medium;
   @include colors.color("gray-600");
+  margin: 1px 0;
 
-  &_selected:not(.rdp-day_outside) {
+  &_selected:not(&_outside) {
     @include colors.color("white-500");
-    @include colors.background("primary-500");
+    @include colors.color("primary-500");
+
     &:hover {
       @include colors.background("primary-500", 0.8);
     }
   }
-  margin: 1px 0;
-  &_range_end,
-  &_range_start {
+
+  &_range_end:not(&_outside),
+  &_range_start:not(&_outside) {
     position: relative;
     border-radius: 100%;
     padding: 0;
+    @include colors.color("white-500");
+    @include colors.background("primary-500");
+
     &::after {
       content: "";
       @include colors.background("primary-500", 0.1);
@@ -113,25 +117,28 @@
       z-index: -1;
     }
   }
-  &_range_start {
-    &::after {
-      border-radius: 100% 0 0 100%;
-      right: 0;
-    }
+
+  &_range_start::after {
+    border-radius: 100% 0 0 100%;
+    right: 0;
   }
-  &_range_end {
-    &::after {
-      border-radius: 0 100% 100% 0;
-      left: 0;
-    }
+
+  &_range_end::after {
+    border-radius: 0 100% 100% 0;
+    left: 0;
   }
-  &_range_middle.rdp-day_selected:not(.rdp-day_outside) {
+
+  &_range_end#{$rdp-day-root}_range_start::after {
+    display: none;
+  }
+
+  &_range_middle:not(&_outside) {
     border-radius: 0;
     @include colors.themed-property("background-color", "primary-500", 0.1);
     @include colors.color("primary-700");
+
     &:hover {
       @include colors.themed-property("background-color", "primary-500", 0.3);
-      @include colors.color("primary-700");
     }
   }
 }
