@@ -2,7 +2,7 @@
 @use "typography";
 
 .rdp {
-  --rdp-cell-size: 40px;
+  --rdp-cell-size: 42px;
   @include colors.themed-property("--rdp-accent-color", "primary-500");
   @include colors.themed-property("--rdp-background-color", "primary-500", 0.1);
   @include colors.themed-property("--rdp-accent-color-dark", "primary-500");
@@ -10,7 +10,7 @@
   --rdp-outline: 2px solid var(--rdp-accent-color); /* Outline border for focused elements */
   --rdp-outline-selected: 3px solid var(--rdp-accent-color); /* Outline border for focused _and_ selected elements */
   --rdp-selected-color: #fff; /* Color of selected day text */
-  margin: 1em;
+  width: 100%;
 }
 
 /* Hide elements for devices that are not screen readers */
@@ -63,8 +63,8 @@ $rdp-day-root: ".rdp-day";
   justify-content: center;
   box-sizing: border-box;
   width: var(--rdp-cell-size);
-  max-width: var(--rdp-cell-size);
   height: var(--rdp-cell-size);
+  max-width: var(--rdp-cell-size);
   margin: 0;
   border-radius: 100%;
 
@@ -88,7 +88,7 @@ $rdp-day-root: ".rdp-day";
 #{$rdp-day-root} {
   @extend .label-medium;
   @include colors.color("gray-600");
-  margin: 1px 0;
+  margin: 2px 0;
 
   &_selected:not(&_outside) {
     @include colors.color("white-500");
@@ -146,14 +146,31 @@ $rdp-day-root: ".rdp-day";
 .rdp-months {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .rdp-month {
-  margin: 0 1em;
+  width: 100%;
+  position: relative;
+  overflow: visible;
+  margin: 0 0 48px 0;
+  padding: 0 0 24px 0;
+  border: 1px solid;
+  border-radius: 12px;
+  @include colors.border-color("gray-100");
+  .rdp-caption {
+    margin-top: -21px;
+    margin-left: 26px;
+  }
+  .rdp-table {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .rdp-month:first-child {
   margin-left: 0;
+  margin-top: 48px;
 }
 
 .rdp-month:last-child {
@@ -172,71 +189,27 @@ $rdp-day-root: ".rdp-day";
 }
 
 .rdp-caption {
+  z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0;
-  text-align: left;
-}
-
-.rdp-multiple_months .rdp-caption {
-  position: relative;
-  display: block;
-  text-align: center;
+  .rdp-nav {
+    display: none;
+  }
+  &_label {
+    background-color: white;
+    @extend .text-button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid;
+    @include colors.border-color("gray-100");
+  }
 }
 
 .rdp-caption_dropdowns {
   position: relative;
   display: inline-flex;
-}
-
-.rdp-caption_label {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  margin: 0;
-  padding: 0 0.25em;
-  white-space: nowrap;
-  color: currentColor;
-  border: 0;
-  border: 2px solid transparent;
-  font-family: inherit;
-  font-size: var(--rdp-caption-font-size);
-  font-weight: bold;
-}
-
-.rdp-nav {
-  white-space: nowrap;
-}
-
-.rdp-multiple_months {
-  .rdp-caption_start {
-    .rdp-nav {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-    }
-  }
-  .rdp-caption_end {
-    .rdp-nav {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-    }
-  }
-}
-
-.rdp-nav_button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--rdp-cell-size);
-  height: var(--rdp-cell-size);
-  padding: 0.25em;
-  border-radius: 100%;
 }
 
 /* ---------- */
@@ -310,7 +283,7 @@ $rdp-day-root: ".rdp-day";
   height: var(--rdp-cell-size);
   padding: 0;
   text-transform: capitalize;
-  @include colors.color("gray-700");
+  @include colors.color("gray-600");
 }
 
 .rdp-tbody {
@@ -325,7 +298,6 @@ $rdp-day-root: ".rdp-day";
   width: var(--rdp-cell-size);
   height: 100%;
   height: var(--rdp-cell-size);
-  padding: 0;
   text-align: center;
 }
 
@@ -359,4 +331,27 @@ $rdp-day-root: ".rdp-day";
   outline: var(--rdp-outline);
   outline-offset: 2px;
   z-index: 1;
+}
+
+.datepicker-scrollable-container {
+  --max-height: 480px;
+  position: relative;
+  overflow-y: auto;
+  max-height: var(--max-height);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & + .datepicker-scrollable-container-fade {
+    margin-top: -56px;
+  }
+}
+
+.datepicker-scrollable-container-fade {
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(180deg, transparent, white);
+  width: 100%;
+  height: 56px;
 }

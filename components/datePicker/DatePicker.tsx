@@ -2,13 +2,12 @@ import { addDays, format } from "date-fns";
 import { ComponentProps, useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import "../../styles/datepicker.scss";
-
-const pastMonth = new Date(new Date().setMonth(new Date().getMonth() - 1));
+import React from "react";
 
 export function DatePicker(props: ComponentProps<typeof DayPicker>) {
   const defaultSelected: DateRange = {
-    from: pastMonth,
-    to: addDays(pastMonth, 4),
+    from: new Date(),
+    to: addDays(new Date(), 4),
   };
   const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
 
@@ -29,7 +28,7 @@ export function DatePicker(props: ComponentProps<typeof DayPicker>) {
     <DayPicker
       {...props}
       mode="range"
-      defaultMonth={pastMonth}
+      defaultMonth={new Date()}
       selected={range}
       onSelect={setRange}
     />
