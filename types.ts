@@ -1,6 +1,6 @@
 import mongodb from "mongodb";
-export type PageProps = {
-  params: { slug: string };
+export type PageProps<T extends {}> = {
+  params: { slug: string } & T;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
