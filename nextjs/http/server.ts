@@ -2,9 +2,9 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { getCollection } from "../../mongodb";
 import { WithId } from "../../types";
 import { ObjectId } from "bson";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export declare class TypedRequest<T> extends Request {
+export declare class TypedRequest<T> extends NextRequest {
   json(): Promise<T>;
 }
 
@@ -33,8 +33,7 @@ export async function deleteMethod<T extends { id: string } = { id: string }>(
 ): Promise<Response> {
   const body = await request.json();
   const collection = await getCollection<WithId<T>>(...collectionName);
-  const res = new NextResponse();
-  const session = await getSession(request as any, res);
+  const session = await getSession();
   if (!session?.user.sub) {
     return NextResponse.error();
   }
@@ -66,8 +65,7 @@ export async function postMethod<T extends any>(
     sanitizedBody = body;
   }
   const collection = await getCollection<T>(...collectionName);
-  const res = new NextResponse();
-  const session = await getSession(request as any, res);
+  const session = await getSession();
   if (!session?.user.sub) {
     return NextResponse.error();
   }
