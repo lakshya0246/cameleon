@@ -1,6 +1,6 @@
 {
   "name": "@alsd/cameleon",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Components and utilities that help me quickly create personal projects",
   "main": "index.ts",
   "scripts": {},
