@@ -1,6 +1,6 @@
-import { Collection, MongoClient } from "mongodb";
-import { WithSoftDelete, WithUserId } from "../types";
 import { getSession } from "@auth0/nextjs-auth0";
+import { Collection, MongoClient } from "mongodb";
+import { WithUserId } from "../types";
 
 if (!process.env.MONGODB_URI) {
   throw new Error("Missing MONGODB_URI environment variable");
