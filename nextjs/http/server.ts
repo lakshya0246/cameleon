@@ -72,6 +72,8 @@ export async function postMethod<T extends any>(
   const result = await collection.insertOne({
     // FIXME
     ...(sanitizedBody as any),
+    createdAt: new Date(),
+    updatedAt: new Date(),
     userId: session.user.sub,
   });
   if (result.acknowledged) {

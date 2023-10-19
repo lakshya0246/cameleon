@@ -10,3 +10,4 @@ export type WithId<T> = mongodb.WithId<T>;
 export type WithStringifiedId<T> = { _id: string } & Omit<T, "_id">;
 export type WithDateTime<T> = { dateTime: Date } & T;
 export type WithSoftDelete<T> = { deleted?: boolean } & T;
+export type WithTimestamps<T> = { createdAt: Date; updatedAt: Date } & T;
