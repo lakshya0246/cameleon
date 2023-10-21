@@ -28,6 +28,11 @@ body {
   margin: 0;
 }
 
+.section-heading-2 {
+  @extend .display-heading-2;
+  margin: 0;
+}
+
 @mixin on-mobile-devices() {
   @media (max-width: 768px) {
     @content;
