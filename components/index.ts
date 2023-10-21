@@ -7,3 +7,4 @@ export * from "./sideDrawer";
 export * from "./checkbox";
 export * from "./select";
 export * from "./datePicker";
+export * from "./bottomSheet";
