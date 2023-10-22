@@ -339,7 +339,7 @@ $rdp-day-root: ".rdp-day";
   --max-height: 480px;
   position: relative;
   overflow-y: auto;
-  max-height: var(--max-height);
+  height: var(--max-height);
 
   display: flex;
   flex-direction: column;
