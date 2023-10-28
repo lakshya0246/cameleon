@@ -11,6 +11,7 @@ body {
 }
 .content-wrapper {
   padding: $paddingY $paddingX;
+  height: fit-content;
 }
 
 .section-header {
