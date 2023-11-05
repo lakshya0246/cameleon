@@ -72,3 +72,13 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
+
+.text-button-small {
+  @include colors.color("gray-700");
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
