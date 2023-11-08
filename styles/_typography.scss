@@ -51,6 +51,14 @@ body {
   letter-spacing: 0.02em;
 }
 
+.label-small {
+  @include colors.color("gray-700");
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
 .text-bold {
   font-weight: 700;
 }
