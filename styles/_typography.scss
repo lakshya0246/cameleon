@@ -10,6 +10,14 @@ body {
   font-family: font-family();
 }
 
+.title-large {
+  @include colors.color("gray-700");
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+}
+
 .display-heading-1 {
   @include colors.color("gray-700");
   font-size: 18px;
