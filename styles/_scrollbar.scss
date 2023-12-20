@@ -5,3 +5,10 @@
     display: none;
   }
 }
+
+.horizontal-scroll {
+  overflow-x: auto;
+  margin-left: calc(-1 * var(--default-padding-x));
+  margin-right: calc(-1 * var(--default-padding-x));
+  padding: 0 var(--default-padding-x);
+}

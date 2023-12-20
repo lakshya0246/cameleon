@@ -47,15 +47,15 @@ $spacingUnit: 4px;
 
 .mb {
   &-1 {
-    margin-bottom: $spacingUnit;
+    margin-bottom: $spacingUnit !important;
   }
   &-2 {
-    margin-bottom: $spacingUnit * 2;
+    margin-bottom: $spacingUnit * 2 !important;
   }
   &-3 {
-    margin-bottom: $spacingUnit * 3;
+    margin-bottom: $spacingUnit * 3 !important;
   }
   &-4 {
-    margin-bottom: $spacingUnit * 4;
+    margin-bottom: $spacingUnit * 4 !important;
   }
 }
