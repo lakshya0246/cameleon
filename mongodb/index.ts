@@ -1,6 +1,7 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { Collection, MongoClient } from "mongodb";
 import { WithUserId } from "../types";
+import { WithClientId } from "../../common/config";
 
 if (!process.env.MONGODB_URI) {
   throw new Error("Missing MONGODB_URI environment variable");
@@ -16,14 +17,16 @@ export async function getMongoClient() {
   return mongoClient;
 }
 
-export async function getCollection<T>(
+export async function getCollection<T, C extends {} = WithUserId<T>>(
   dbName: string,
   collectionName: string
-): Promise<Collection<WithUserId<T>>> {
+) {
   const mongoClient = await getMongoClient();
-  const collection = mongoClient
-    .db(dbName)
-    .collection<WithUserId<T>>(collectionName);
+  const collection = mongoClient.db(dbName).collection<
+    T & {
+      [K in keyof C]: C[K];
+    }
+  >(collectionName);
   return collection;
 }
 
