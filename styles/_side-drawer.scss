@@ -1,7 +1,9 @@
 @use "colors";
 @use "layout";
 $default-padding: 12px 8px;
+
 .sidedrawer-content {
+  z-index: 99;
   display: flex;
   flex-direction: column;
   @include colors.background("white-500");
@@ -12,7 +14,23 @@ $default-padding: 12px 8px;
   right: 0;
   height: 100vh;
   overflow-y: hidden;
+  animation: slide-in-left 400ms ease-out;
 }
+
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .sidedrawer-body {
   display: flex;
   flex-direction: column;
