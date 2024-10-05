@@ -1,1 +1,1 @@
-Opinionated components and utilities for quickly create web apps
+Opinionated components and utilities for quickly creating web apps
